@@ -1,0 +1,338 @@
+:root {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: #f6efe7;
+  background:
+    radial-gradient(circle at top left, rgba(255, 140, 92, 0.22), transparent 28%),
+    radial-gradient(circle at top right, rgba(73, 145, 255, 0.18), transparent 25%),
+    linear-gradient(145deg, #101418 0%, #171d24 45%, #0f1318 100%);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --panel-bg: rgba(19, 25, 33, 0.82);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --text-soft: #b6c2cf;
+  --text-strong: #fff5ec;
+  --accent: #ff8a5c;
+  --accent-alt: #56b6ff;
+  --success: #8ce0b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app-backdrop {
+  position: absolute;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 999px;
+  filter: blur(100px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.app-backdrop-left {
+  top: -6rem;
+  left: -8rem;
+  background: rgba(255, 138, 92, 0.28);
+}
+
+.app-backdrop-right {
+  right: -9rem;
+  bottom: -10rem;
+  background: rgba(86, 182, 255, 0.18);
+}
+
+.dashboard {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+}
+
+.hero-card,
+.panel,
+.status-banner {
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+  gap: 24px;
+  border-radius: 28px;
+  padding: 32px;
+  animation: rise-in 420ms ease-out;
+}
+
+.eyebrow,
+.panel-kicker,
+.metric-label,
+.commit-pill-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+}
+
+.hero-copy h1,
+.panel-header h2 {
+  margin: 0;
+  color: var(--text-strong);
+}
+
+.hero-copy h1 {
+  margin-top: 10px;
+  max-width: 12ch;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.96;
+}
+
+.hero-text {
+  max-width: 58ch;
+  margin: 18px 0 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  color: #18120f;
+  background: linear-gradient(135deg, #ffb26f 0%, #ff8a5c 60%, #ff6d49 100%);
+  box-shadow: 0 16px 34px rgba(255, 125, 82, 0.35);
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    opacity 150ms ease;
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 38px rgba(255, 125, 82, 0.4);
+}
+
+.primary-button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.commit-pill {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 180px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.commit-pill strong {
+  margin-top: 6px;
+  font-size: 1rem;
+  color: var(--text-strong);
+}
+
+.hero-metrics {
+  display: grid;
+  gap: 14px;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.metric-card-accent {
+  background: linear-gradient(160deg, rgba(86, 182, 255, 0.16), rgba(140, 224, 181, 0.1));
+}
+
+.metric-value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  color: var(--text-strong);
+}
+
+.status-banner {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+}
+
+.status-error {
+  color: #ffcab8;
+  border-color: rgba(255, 112, 80, 0.28);
+}
+
+.status-info {
+  color: #d7ebff;
+  border-color: rgba(86, 182, 255, 0.24);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.panel {
+  border-radius: 24px;
+  padding: 24px;
+  animation: rise-in 520ms ease-out;
+}
+
+.panel-summary {
+  min-height: 420px;
+  grid-row: span 2;
+}
+
+.panel-header {
+  margin-bottom: 18px;
+}
+
+.panel-header h2 {
+  margin-top: 8px;
+  font-size: 1.3rem;
+}
+
+.summary-output {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #f5efe8;
+  line-height: 1.7;
+  font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 18px;
+  min-height: 280px;
+}
+
+.panel-empty {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.token-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.token-item {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f2f5f7;
+  font-size: 0.92rem;
+}
+
+.token-item-accent {
+  background: rgba(86, 182, 255, 0.12);
+  border-color: rgba(86, 182, 255, 0.18);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 920px) {
+  .hero-card,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-summary {
+    grid-row: auto;
+    min-height: auto;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    padding: 22px 14px 40px;
+  }
+
+  .hero-card,
+  .panel {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .primary-button,
+  .commit-pill {
+    width: 100%;
+  }
+}
