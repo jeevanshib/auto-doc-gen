@@ -193,6 +193,12 @@ Entries in `docs/updates.json` follow this shape:
 }
 ```
 
+## Architecture Mapping
+
+The system scans the repository and builds a module dependency graph based on
+imports. The graph is rendered in the dashboard to visualize how services and
+modules interact.
+
 ## Supported Parser Detection
 
 The parser currently detects:

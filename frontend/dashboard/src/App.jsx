@@ -4,6 +4,7 @@ import { generateDocs } from "./api"
 import FilesChanged from "./components/FilesChanged"
 import APIPanel from "./components/APIPanel"
 import SummaryPanel from "./components/SummaryPanel"
+import ArchitectureGraph from "./components/ArchitectureGraph"
 
 function App() {
   const [data, setData] = useState(null)
@@ -78,6 +79,7 @@ function App() {
 
         <section className="content-grid">
           <SummaryPanel summary={data?.summary || ""} />
+          <ArchitectureGraph />
           <FilesChanged files={data?.files || []} />
           <APIPanel apis={data?.apis || []} />
         </section>

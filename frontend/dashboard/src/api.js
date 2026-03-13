@@ -22,3 +22,14 @@ export async function getHistory() {
 
   return payload
 }
+
+export async function getArchitecture() {
+  const response = await fetch("http://localhost:8000/architecture")
+  const payload = await response.json()
+
+  if (!response.ok) {
+    throw new Error(payload.detail || "Failed to load architecture")
+  }
+
+  return payload
+}

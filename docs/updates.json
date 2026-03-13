@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "commit": "6b35632",
+    "summary": "**Technical Documentation**\n\n**New Features:**\n\n* The `SummaryPanel` component now displays \"Generated Documentation for enterprises\" instead of \"Generated Documentation\". This change enhances the component's output to specifically cater to enterprise-level documentation.\n\n**Code Changes:**\n\n* Updated the JSX code in `SummaryPanel` to modify the heading text from \"Generated Documentation\" to \"Generated Documentation for enterprises\".\n\n**Affected Modules:**\n\n* The `SummaryPanel` component in the `frontend/dashboard/src/components` directory has been updated with this change.",
+    "files": [
+      "frontend/dashboard/src/components/SummaryPanel.jsx"
+    ],
+    "apis": [],
+    "timestamp": "2026-03-13T15:05:52.896439+00:00"
+  }
+]

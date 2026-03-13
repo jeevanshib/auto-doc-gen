@@ -3,6 +3,7 @@ from __future__ import annotations
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from arch_parser import build_arch_graph
 from git_utils import get_git_diff, get_last_commit
 from llm_service import summarize_diff
 from parser import parse_changes
@@ -25,6 +26,14 @@ def history() -> list[dict]:
         return get_updates()
     except RuntimeError as error:
         raise HTTPException(status_code=500, detail=str(error)) from error
+
+
+@app.get("/architecture")
+def architecture() -> dict:
+    try:
+        return build_arch_graph("..")
+    except Exception as error:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail="Failed to build architecture graph.") from error
 
 
 @app.post("/generate")
