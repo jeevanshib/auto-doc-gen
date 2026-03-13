@@ -5,7 +5,7 @@ function SummaryPanel({ summary }) {
     <section className="panel panel-summary">
       <div className="panel-header">
         <p className="panel-kicker">AI Summary</p>
-        <h2>Generated Documentation</h2>
+        <h2>Generated Documentation for enterprises</h2>
       </div>
 
       {summary ? (
